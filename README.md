@@ -43,6 +43,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 You should generate a new graphql file after changing or creating .graphql files.
 
+### `npm run lint:fix`
+
+Fixes all warnings, errors and issues.
+
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

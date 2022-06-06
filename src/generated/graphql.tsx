@@ -25,7 +25,7 @@ export type BasicMission = {
 
 export enum CacheControlScope {
   Private = 'PRIVATE',
-  Public = 'PUBLIC'
+  Public = 'PUBLIC',
 }
 
 export type Capsule = {
@@ -44,7 +44,7 @@ export type Capsule = {
 
 export enum CapsuleRange {
   Past = 'past',
-  Upcoming = 'upcoming'
+  Upcoming = 'upcoming',
 }
 
 export type Core = {
@@ -232,7 +232,7 @@ export enum LaunchRange {
   Latest = 'latest',
   Next = 'next',
   Past = 'past',
-  Upcoming = 'upcoming'
+  Upcoming = 'upcoming',
 }
 
 export type LaunchRocket = {
@@ -375,7 +375,7 @@ export type Mission = {
 
 export enum Order {
   Asc = 'asc',
-  Desc = 'desc'
+  Desc = 'desc',
 }
 
 export type Payload = {
@@ -461,11 +461,9 @@ export type Query = {
   ships?: Maybe<Array<Maybe<Ship>>>;
 };
 
-
 export type QueryCapsuleArgs = {
   capsule_serial: Scalars['String'];
 };
-
 
 export type QueryCapsulesArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -475,11 +473,9 @@ export type QueryCapsulesArgs = {
   sort?: InputMaybe<Scalars['String']>;
 };
 
-
 export type QueryCoreArgs = {
   core_serial: Scalars['String'];
 };
-
 
 export type QueryCoresArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -488,17 +484,14 @@ export type QueryCoresArgs = {
   sort?: InputMaybe<Scalars['String']>;
 };
 
-
 export type QueryDragonArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryDragonsArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type QueryHistoryArgs = {
   id?: InputMaybe<Scalars['String']>;
@@ -508,22 +501,18 @@ export type QueryHistoryArgs = {
   sort?: InputMaybe<Scalars['String']>;
 };
 
-
 export type QueryLandingpadArgs = {
   id?: InputMaybe<Scalars['String']>;
 };
-
 
 export type QueryLandingpadsArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryLaunchArgs = {
   id?: InputMaybe<Scalars['String']>;
 };
-
 
 export type QueryLaunchesArgs = {
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -534,33 +523,27 @@ export type QueryLaunchesArgs = {
   sort?: InputMaybe<Scalars['String']>;
 };
 
-
 export type QueryLaunchpadArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryLaunchpadsArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryMissionArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryMissionsArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryPayloadArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryPayloadsArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -569,22 +552,18 @@ export type QueryPayloadsArgs = {
   sort?: InputMaybe<Scalars['String']>;
 };
 
-
 export type QueryRocketArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryRocketsArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type QueryShipArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryShipsArgs = {
   limit?: InputMaybe<Scalars['Int']>;
@@ -736,28 +715,50 @@ export type TrunkCargo = {
   unpressurized_cargo?: Maybe<Scalars['Boolean']>;
 };
 
-export type LaunchListQueryVariables = Exact<{ [key: string]: never; }>;
+export type LaunchListQueryVariables = Exact<{ [key: string]: never }>;
 
-
-export type LaunchListQuery = { __typename?: 'Query', launches?: Array<{ __typename?: 'Launch', flight_number?: number | null, mission_name?: string | null, launch_year?: number | null } | null> | null };
+export type LaunchListQuery = {
+  __typename?: 'Query';
+  launches?: Array<{
+    __typename?: 'Launch';
+    flight_number?: number | null;
+    mission_name?: string | null;
+    launch_year?: number | null;
+  } | null> | null;
+};
 
 export type LaunchProfileQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
-
-export type LaunchProfileQuery = { __typename?: 'Query', launch?: { __typename?: 'Launch', flight_number?: number | null, mission_name?: string | null, launch_year?: number | null, launch_success?: boolean | null, details?: string | null, launch_site?: { __typename?: 'LaunchSite', site_name?: string | null } | null, rocket?: { __typename?: 'LaunchRocket', rocket_name?: string | null, rocket_type?: string | null } | null, links?: { __typename?: 'LaunchLinks', flickr_images?: Array<string | null> | null } | null } | null };
-
+export type LaunchProfileQuery = {
+  __typename?: 'Query';
+  launch?: {
+    __typename?: 'Launch';
+    flight_number?: number | null;
+    mission_name?: string | null;
+    launch_year?: number | null;
+    launch_success?: boolean | null;
+    details?: string | null;
+    launch_site?: { __typename?: 'LaunchSite'; site_name?: string | null } | null;
+    rocket?: {
+      __typename?: 'LaunchRocket';
+      rocket_name?: string | null;
+      rocket_type?: string | null;
+    } | null;
+    links?: { __typename?: 'LaunchLinks'; flickr_images?: Array<string | null> | null } | null;
+  } | null;
+};
 
 export const LaunchListDocument = gql`
-    query LaunchList {
-  launches {
-    flight_number
-    mission_name
-    launch_year
+  query LaunchList {
+    launches {
+      flight_number
+      mission_name
+      launch_year
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useLaunchListQuery__
@@ -774,38 +775,45 @@ export const LaunchListDocument = gql`
  *   },
  * });
  */
-export function useLaunchListQuery(baseOptions?: Apollo.QueryHookOptions<LaunchListQuery, LaunchListQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<LaunchListQuery, LaunchListQueryVariables>(LaunchListDocument, options);
-      }
-export function useLaunchListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LaunchListQuery, LaunchListQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<LaunchListQuery, LaunchListQueryVariables>(LaunchListDocument, options);
-        }
+export function useLaunchListQuery(
+  baseOptions?: Apollo.QueryHookOptions<LaunchListQuery, LaunchListQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<LaunchListQuery, LaunchListQueryVariables>(LaunchListDocument, options);
+}
+export function useLaunchListLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<LaunchListQuery, LaunchListQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<LaunchListQuery, LaunchListQueryVariables>(
+    LaunchListDocument,
+    options
+  );
+}
 export type LaunchListQueryHookResult = ReturnType<typeof useLaunchListQuery>;
 export type LaunchListLazyQueryHookResult = ReturnType<typeof useLaunchListLazyQuery>;
 export type LaunchListQueryResult = Apollo.QueryResult<LaunchListQuery, LaunchListQueryVariables>;
 export const LaunchProfileDocument = gql`
-    query LaunchProfile($id: String!) {
-  launch(id: $id) {
-    flight_number
-    mission_name
-    launch_year
-    launch_success
-    details
-    launch_site {
-      site_name
-    }
-    rocket {
-      rocket_name
-      rocket_type
-    }
-    links {
-      flickr_images
+  query LaunchProfile($id: String!) {
+    launch(id: $id) {
+      flight_number
+      mission_name
+      launch_year
+      launch_success
+      details
+      launch_site {
+        site_name
+      }
+      rocket {
+        rocket_name
+        rocket_type
+      }
+      links {
+        flickr_images
+      }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useLaunchProfileQuery__
@@ -823,14 +831,27 @@ export const LaunchProfileDocument = gql`
  *   },
  * });
  */
-export function useLaunchProfileQuery(baseOptions: Apollo.QueryHookOptions<LaunchProfileQuery, LaunchProfileQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<LaunchProfileQuery, LaunchProfileQueryVariables>(LaunchProfileDocument, options);
-      }
-export function useLaunchProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LaunchProfileQuery, LaunchProfileQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<LaunchProfileQuery, LaunchProfileQueryVariables>(LaunchProfileDocument, options);
-        }
+export function useLaunchProfileQuery(
+  baseOptions: Apollo.QueryHookOptions<LaunchProfileQuery, LaunchProfileQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<LaunchProfileQuery, LaunchProfileQueryVariables>(
+    LaunchProfileDocument,
+    options
+  );
+}
+export function useLaunchProfileLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<LaunchProfileQuery, LaunchProfileQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<LaunchProfileQuery, LaunchProfileQueryVariables>(
+    LaunchProfileDocument,
+    options
+  );
+}
 export type LaunchProfileQueryHookResult = ReturnType<typeof useLaunchProfileQuery>;
 export type LaunchProfileLazyQueryHookResult = ReturnType<typeof useLaunchProfileLazyQuery>;
-export type LaunchProfileQueryResult = Apollo.QueryResult<LaunchProfileQuery, LaunchProfileQueryVariables>;
+export type LaunchProfileQueryResult = Apollo.QueryResult<
+  LaunchProfileQuery,
+  LaunchProfileQueryVariables
+>;
