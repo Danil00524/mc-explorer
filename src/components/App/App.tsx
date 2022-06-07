@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { useLaunchListQuery } from '../../generated/graphql';
+import { useLaunchListQuery } from '../../graphql/generated';
 
 export const App: FC = () => {
   const { data, error, loading } = useLaunchListQuery();
